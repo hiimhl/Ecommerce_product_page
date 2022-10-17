@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>쇼핑몰 상품 페이지 | Frontend Mentor</title>
+
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header class="header">
+        <img src="images/logo.svg" alt="logo" class="header_logo" />
+        <nav class="navBar">
+          <ul>
+            <li class="nav_page"><a href="#">Collections</a></li>
+            <li class="nav_page"><a href="#">Men</a></li>
+            <li class="nav_page"><a href="#">Women</a></li>
+            <li class="nav_page"><a href="#">About</a></li>
+            <li class="nav_page"><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="user-container">
+          <button class="cart_btn">
+            <img src="images/icon-cart.svg" alt="cart" />
+          </button>
+          <div class="user-img">유저사진</div>
+          <article class="cart-box">
+            <h3 class="cart_title">Cart</h3>
+            <ul class="cart_list">
+              <li class="cart_item">
+                <img
+                  src="images/image-product-1-thumbnail.jpg"
+                  alt="cart_img"
+                  class="cart_img"
+                />
+                <span class="cart_product">스니커즈</span>
+                <span class="cart_price">20,000원</span>
+              </li>
+              <li class="cart_item">
+                <img
+                  src="images/image-product-1-thumbnail.jpg"
+                  alt="cart_img"
+                  class="cart_img"
+                />
+                <span class="cart_product">스니커즈</span>
+                <span class="cart_price">20,000원</span>
+              </li>
+              <strong>Your cart is empty.</strong>
+            </ul>
+          </article>
+        </div>
+      </header>
+      <section>
+        <article class="images-container">
+          <div class="images_main">
+            <img src="images/image-product-1.jpg" alt="product-image" />
+          </div>
+          <ul class="thumbnails">
+            <li class="thumbnail-img" data-img="1">
+              <img src="images/image-product-1-thumbnail.jpg" alt="thumbnail" />
+            </li>
+            <li class="thumbnail-img" data-img="2">
+              <img src="images/image-product-2-thumbnail.jpg" alt="thumbnail" />
+            </li>
+            <li class="thumbnail-img" data-img="3">
+              <img src="images/image-product-3-thumbnail.jpg" alt="thumbnail" />
+            </li>
+            <li class="thumbnail-img" data-img="4">
+              <img src="images/image-product-4-thumbnail.jpg" alt="thumbnail" />
+            </li>
+          </ul>
+        </article>
+        <article class="product-container">
+          <small class="product_brand">Sneaker Company</small>
+          <h1 class="product_title">Fall Limited Edition Sneakers</h1>
+          <div class="product_content">
+            <p class="content_info">
+              These low-profile sneakers are your perfect casual wear companion.
+              Featuring a durable rubber outer sole, they’ll withstand
+              everything the weather can offer.
+            </p>
+            <div class="product_price">
+              <h5 class="price">125,000원</h5>
+              <span class="sale">50%</span>
+              <small class="before_price">250,000원</small>
+            </div>
+            <div class="product_btns">
+              <div class="btns_count">
+                <button class="count_minus">-</button
+                ><span class="count_num">3</span
+                ><button class="count_plus">+</button>
+              </div>
+              <button class="btns_add-cart">Add to cart</button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </body>
+</html>
