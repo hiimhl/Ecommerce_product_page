@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,25 +10,29 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>쇼핑몰 상품 페이지 | Frontend Mentor</title>
 
-    <style>
-      .attribution {
-        font-size: 11px;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
+    <link rel="stylesheet" href="src/reset.css" />
+    <link rel="stylesheet" href="src/style.css" />
+
+    <script src="src/App.js" defer></script>
   </head>
   <body>
     <div id="wrapper">
+      <!-- header -->
       <header class="header">
-        <img src="images/logo.svg" alt="logo" class="header_logo" />
         <nav class="navBar">
-          <ul>
+          <a class="header_logo" href="#"
+            ><img src="images/logo.svg" alt="logo"
+          /></a>
+          <ul class="nav_pages">
             <li class="nav_page"><a href="#">Collections</a></li>
             <li class="nav_page"><a href="#">Men</a></li>
             <li class="nav_page"><a href="#">Women</a></li>
@@ -36,38 +40,61 @@
             <li class="nav_page"><a href="#">Contact</a></li>
           </ul>
         </nav>
+        <!-- shopping cart and user info -->
         <div class="user-container">
           <button class="cart_btn">
             <img src="images/icon-cart.svg" alt="cart" />
           </button>
-          <div class="user-img">유저사진</div>
-          <article class="cart-box">
+          <button class="user-img">
+            <img src="images/image-avatar.png" alt="user-image" />
+          </button>
+          <!-- shopping cart -->
+          <article class="cart-box hidden">
             <h3 class="cart_title">Cart</h3>
             <ul class="cart_list">
               <li class="cart_item">
-                <img
-                  src="images/image-product-1-thumbnail.jpg"
-                  alt="cart_img"
-                  class="cart_img"
-                />
-                <span class="cart_product">스니커즈</span>
-                <span class="cart_price">20,000원</span>
+                <div class="item_info">
+                  <img
+                    src="images/image-product-1-thumbnail.jpg"
+                    alt="item_img"
+                    class="item_img"
+                  />
+                  <span class="item_product">스니커즈</span>
+                  <span class="item_price">20,000원</span>
+                </div>
+                <div class="cart_btns">
+                  <button class="cart_minus">-</button>
+                  <span class="cart_num">3</span>
+                  <button class="cart_plus">+</button>
+                  <button class="cart_remove">🗑</button>
+                </div>
               </li>
               <li class="cart_item">
-                <img
-                  src="images/image-product-1-thumbnail.jpg"
-                  alt="cart_img"
-                  class="cart_img"
-                />
-                <span class="cart_product">스니커즈</span>
-                <span class="cart_price">20,000원</span>
+                <div class="item_info">
+                  <img
+                    src="images/image-product-1-thumbnail.jpg"
+                    alt="item_img"
+                    class="item_img"
+                  />
+                  <span class="item_product">스니커즈</span>
+                  <span class="item_price">20,000원</span>
+                </div>
+                <div class="cart_btns">
+                  <button class="count_minus">-</button
+                  ><span class="count_num">3</span
+                  ><button class="count_plus">+</button>
+                  <button class="count_remove">🗑</button>
+                </div>
               </li>
-              <strong>Your cart is empty.</strong>
+
+              <strong class="empty hidden">Your cart is empty.</strong>
             </ul>
           </article>
         </div>
       </header>
-      <section>
+      <!-- product info -->
+      <section class="product-detail">
+        <!-- images -->
         <article class="images-container">
           <div class="images_main">
             <img src="images/image-product-1.jpg" alt="product-image" />
@@ -87,6 +114,7 @@
             </li>
           </ul>
         </article>
+        <!-- info -->
         <article class="product-container">
           <small class="product_brand">Sneaker Company</small>
           <h1 class="product_title">Fall Limited Edition Sneakers</h1>
@@ -107,17 +135,17 @@
                 ><span class="count_num">3</span
                 ><button class="count_plus">+</button>
               </div>
-              <button class="btns_add-cart">Add to cart</button>
+              <button class="btns_add">Add to cart</button>
             </div>
           </div>
         </article>
       </section>
-    </div>
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+          Frontend Mentor </a
+        >. Coded by <a href="#">HLK</a>.
+      </div>
     </div>
   </body>
 </html>
