@@ -16,7 +16,10 @@
       href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
-
+    <script
+      src="https://kit.fontawesome.com/31f273f6bf.js"
+      crossorigin="anonymous"
+    ></script>
     <title>쇼핑몰 상품 페이지 | Frontend Mentor</title>
 
     <link rel="stylesheet" href="src/reset.css" />
@@ -63,31 +66,22 @@
                   <span class="item_price">20,000원</span>
                 </div>
                 <div class="cart_btns">
-                  <button class="cart_minus">-</button>
+                  <button class="count-btn cart_minus">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
                   <span class="cart_num">3</span>
-                  <button class="cart_plus">+</button>
-                  <button class="cart_remove">🗑</button>
-                </div>
-              </li>
-              <li class="cart_item">
-                <div class="item_info">
-                  <img
-                    src="images/image-product-1-thumbnail.jpg"
-                    alt="item_img"
-                    class="item_img"
-                  />
-                  <span class="item_product">스니커즈</span>
-                  <span class="item_price">20,000원</span>
-                </div>
-                <div class="cart_btns">
-                  <button class="count_minus">-</button
-                  ><span class="count_num">3</span
-                  ><button class="count_plus">+</button>
-                  <button class="count_remove">🗑</button>
+                  <button class="count-btn cart_plus">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                  <button class="count-btn cart_remove">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
                 </div>
               </li>
 
-              <strong class="empty hidden">Your cart is empty.</strong>
+              <!-- <li class="cart_empty hidden">
+                <strong> Your cart is empty.</strong>
+              </li> -->
             </ul>
           </article>
         </div>
@@ -100,16 +94,16 @@
             <img src="images/image-product-1.jpg" alt="product-image" />
           </div>
           <ul class="thumbnails">
-            <li class="thumbnail-img" data-img="1">
+            <li class="thumbnail-img thumb_1 selected" data-img="1">
               <img src="images/image-product-1-thumbnail.jpg" alt="thumbnail" />
             </li>
-            <li class="thumbnail-img" data-img="2">
+            <li class="thumbnail-img thumb_2" data-img="2">
               <img src="images/image-product-2-thumbnail.jpg" alt="thumbnail" />
             </li>
-            <li class="thumbnail-img" data-img="3">
+            <li class="thumbnail-img thumb_3" data-img="3">
               <img src="images/image-product-3-thumbnail.jpg" alt="thumbnail" />
             </li>
-            <li class="thumbnail-img" data-img="4">
+            <li class="thumbnail-img thumb_4" data-img="4">
               <img src="images/image-product-4-thumbnail.jpg" alt="thumbnail" />
             </li>
           </ul>
@@ -125,17 +119,22 @@
               everything the weather can offer.
             </p>
             <div class="product_price">
-              <h5 class="price">125,000원</h5>
-              <span class="sale">50%</span>
+              <h5 class="price_price">125,000원</h5>
+              <span class="price_sale">50%</span>
               <small class="before_price">250,000원</small>
             </div>
             <div class="product_btns">
               <div class="btns_count">
-                <button class="count_minus">-</button
+                <button class="count_minus countBtn">
+                  <i class="fa-solid fa-minus"></i></button
                 ><span class="count_num">3</span
-                ><button class="count_plus">+</button>
+                ><button class="count_plus countBtn">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
               </div>
-              <button class="btns_add">Add to cart</button>
+              <button class="btns_add">
+                <img src="images/icon-cart.svg" />Add to cart
+              </button>
             </div>
           </div>
         </article>
