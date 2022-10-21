@@ -55,33 +55,9 @@
           <article class="cart-box hidden">
             <h3 class="cart_title">Cart</h3>
             <ul class="cart_list">
-              <li class="cart_item">
-                <div class="item_info">
-                  <img
-                    src="images/image-product-1-thumbnail.jpg"
-                    alt="item_img"
-                    class="item_img"
-                  />
-                  <span class="item_product">스니커즈</span>
-                  <span class="item_price">20,000원</span>
-                </div>
-                <div class="cart_btns">
-                  <button class="count-btn cart_minus">
-                    <i class="fa-solid fa-minus"></i>
-                  </button>
-                  <span class="cart_num">3</span>
-                  <button class="count-btn cart_plus">
-                    <i class="fa-solid fa-plus"></i>
-                  </button>
-                  <button class="count-btn cart_remove">
-                    <i class="fa-solid fa-trash-can"></i>
-                  </button>
-                </div>
-              </li>
-
-              <!-- <li class="cart_empty hidden">
+              <li class="cart_empty">
                 <strong> Your cart is empty.</strong>
-              </li> -->
+              </li>
             </ul>
           </article>
         </div>
@@ -94,17 +70,17 @@
             <img src="images/image-product-1.jpg" alt="product-image" />
           </div>
           <ul class="thumbnails">
-            <li class="thumbnail-img thumb_1 selected" data-img="1">
-              <img src="images/image-product-1-thumbnail.jpg" alt="thumbnail" />
+            <li class="thumbnail-img selected">
+              <img src="images/image-product-1-thumbnail.jpg" alt="product-1" />
             </li>
-            <li class="thumbnail-img thumb_2" data-img="2">
-              <img src="images/image-product-2-thumbnail.jpg" alt="thumbnail" />
+            <li class="thumbnail-img">
+              <img src="images/image-product-2-thumbnail.jpg" alt="product-2" />
             </li>
-            <li class="thumbnail-img thumb_3" data-img="3">
-              <img src="images/image-product-3-thumbnail.jpg" alt="thumbnail" />
+            <li class="thumbnail-img">
+              <img src="images/image-product-3-thumbnail.jpg" alt="product-3" />
             </li>
-            <li class="thumbnail-img thumb_4" data-img="4">
-              <img src="images/image-product-4-thumbnail.jpg" alt="thumbnail" />
+            <li class="thumbnail-img">
+              <img src="images/image-product-4-thumbnail.jpg" alt="product-4" />
             </li>
           </ul>
         </article>
@@ -127,7 +103,7 @@
               <div class="btns_count">
                 <button class="count_minus countBtn">
                   <i class="fa-solid fa-minus"></i></button
-                ><span class="count_num">3</span
+                ><span class="count_num">0</span
                 ><button class="count_plus countBtn">
                   <i class="fa-solid fa-plus"></i>
                 </button>
@@ -159,20 +135,58 @@
               <img src="images/icon-next.svg" />
             </button>
           </div>
-          <ul class="overlay_thumbnails">
-            <li class="overlay_thumbnail thumb_1 selected" data-img="1">
-              <img src="images/image-product-1-thumbnail.jpg" alt="thumbnail" />
+          <!-- <ul class="overlay_thumbnails">
+            <li class="overlay_thumbnail product-1 selected">
+              <img src="images/image-product-1-thumbnail.jpg" alt="product-1" />
             </li>
-            <li class="overlay_thumbnail thumb_2" data-img="2">
-              <img src="images/image-product-2-thumbnail.jpg" alt="thumbnail" />
+            <li class="overlay_thumbnail product-2">
+              <img src="images/image-product-2-thumbnail.jpg" alt="product-2" />
             </li>
-            <li class="overlay_thumbnail thumb_3" data-img="3">
-              <img src="images/image-product-3-thumbnail.jpg" alt="thumbnail" />
+            <li class="overlay_thumbnail product-3">
+              <img src="images/image-product-3-thumbnail.jpg" alt="product-3" />
             </li>
-            <li class="overlay_thumbnail thumb_4" data-img="4">
-              <img src="images/image-product-4-thumbnail.jpg" alt="thumbnail" />
+            <li class="overlay_thumbnail product-4">
+              <img src="images/image-product-4-thumbnail.jpg" alt="product-4" />
             </li>
-          </ul>
+          </ul> -->
+          <form class="overlay_thumbnails">
+            <input
+              id="product-1"
+              name="thumbnail"
+              value="product-2"
+              type="radio"
+            />
+            <label for="product-1" class="overlay_thumbnail selected">
+              <img src="images/image-product-1-thumbnail.jpg" alt="product-1" />
+            </label>
+            <input
+              id="product-2"
+              name="thumbnail"
+              value="product-2"
+              type="radio"
+            />
+            <label for="product-2" class="overlay_thumbnail">
+              <img src="images/image-product-2-thumbnail.jpg" alt="product-2" />
+            </label>
+            <input
+              id="product-3"
+              name="thumbnail"
+              value="product-3"
+              type="radio"
+            />
+            <label for="product-3" class="overlay_thumbnail">
+              <img src="images/image-product-3-thumbnail.jpg" alt="product-3" />
+            </label>
+            <input
+              id="product-4"
+              name="thumbnail"
+              value="product-4"
+              type="radio"
+            />
+            <label for="product-4" class="overlay_thumbnail">
+              <img src="images/image-product-4-thumbnail.jpg" alt="product-4" />
+            </label>
+          </form>
         </article>
       </section>
       <div class="attribution">
