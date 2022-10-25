@@ -200,35 +200,56 @@ button {
   align-items: center;
 }
 /* images */
-.images_main > img {
+.images_main {
+  width: 38vw;
+  height: 55vh;
+  max-width: 450px;
+  max-height: 450px;
+  border-radius: var(--box-radius);
+  cursor: pointer;
+  background-position: center;
+  background-size: cover;
+}
+.main_product-1 {
+  background-image: url("../images/image-product-1.jpg");
+}
+.main_product-2 {
+  background-image: url("../images/image-product-2.jpg");
+}
+.main_product-3 {
+  background-image: url("../images/image-product-3.jpg");
+}
+.main_product-4 {
+  background-image: url("../images/image-product-4.jpg");
+}
+/* .images_main > img {
   width: 100%;
   border-radius: var(--box-radius);
-}
+  cursor: pointer;
+} */
 .thumbnails {
   margin-top: 1.5rem;
   display: flex;
   gap: 1.5rem;
 }
+.thumbnails > input {
+  display: none;
+}
 .thumbnail-img {
   border-radius: calc(var(--box-radius) / 2);
   height: auto;
   width: 100%;
+  border: 2px solid white;
+  overflow: hidden;
 }
+
 .thumbnail-img > img {
   width: 100%;
   height: 100%;
-  border-radius: calc(var(--box-radius) / 2);
   transition: opacity 0.3s ease-in;
   cursor: pointer;
 }
 .thumbnail-img > img:hover {
-  opacity: 50%;
-}
-/* selected btn */
-.selected {
-  border: 2px solid var(--main-orange);
-}
-.selected > img {
   opacity: 50%;
 }
 
@@ -346,6 +367,9 @@ button {
 }
 .overlay_main-img {
   width: 85%;
+  height: 30vw;
+  background-image: url("../images/image-product-1.jpg");
+  background-size: cover;
   border-radius: var(--box-radius);
 }
 .overlay_btn {
@@ -385,18 +409,31 @@ button {
 }
 .overlay_thumbnail {
   width: 100%;
+  border: transparent solid 2px;
   border-radius: calc(var(--box-radius) / 2);
-  transition: opacity 0.3s ease-in;
-  background-color: var(--main-white);
   cursor: pointer;
 }
 .overlay_thumbnail > img {
   border-radius: calc(var(--box-radius) / 2);
   width: 100%;
+  transition: opacity 0.3s ease-in;
   height: 100%;
+}
+
+.overlay_thumbnail > img:hover {
+  opacity: 50%;
 }
 
 /* hidden */
 .hidden {
   display: none;
+}
+
+/* selected btn */
+.selected {
+  border: 2px solid var(--main-orange);
+  background-color: var(--main-white);
+}
+.selected > img {
+  opacity: 50%;
 }

@@ -66,23 +66,51 @@
       <section class="product-detail">
         <!-- images -->
         <article class="images-container">
-          <div class="images_main">
-            <img src="images/image-product-1.jpg" alt="product-image" />
+          <div class="images_main main_product-1">
+            <!-- <img src="images/image-product-1.jpg" alt="product-image" /> -->
           </div>
-          <ul class="thumbnails">
-            <li class="thumbnail-img selected">
+          <form class="thumbnails">
+            <input
+              id="product-1"
+              name="main_thumbnail"
+              value="product-1"
+              type="radio"
+              class="thumb-radio"
+            />
+            <label for="product-1" class="thumbnail-img product-1 selected">
               <img src="images/image-product-1-thumbnail.jpg" alt="product-1" />
-            </li>
-            <li class="thumbnail-img">
+            </label>
+            <input
+              id="product-2"
+              name="main_thumbnail"
+              value="product-2"
+              type="radio"
+              class="thumb-radio"
+            />
+            <label for="product-2" class="thumbnail-img product-2">
               <img src="images/image-product-2-thumbnail.jpg" alt="product-2" />
-            </li>
-            <li class="thumbnail-img">
+            </label>
+            <input
+              id="product-3"
+              name="main_thumbnail"
+              value="product-3"
+              type="radio"
+              class="thumb-radio"
+            />
+            <label for="product-3" class="thumbnail-img product-3">
               <img src="images/image-product-3-thumbnail.jpg" alt="product-3" />
-            </li>
-            <li class="thumbnail-img">
+            </label>
+            <input
+              id="product-4"
+              name="main_thumbnail"
+              value="product-4"
+              type="radio"
+              class="thumb-radio"
+            />
+            <label for="product-4" class="thumbnail-img product-4">
               <img src="images/image-product-4-thumbnail.jpg" alt="product-4" />
-            </li>
-          </ul>
+            </label>
+          </form>
         </article>
         <!-- info -->
         <article class="product-container">
@@ -118,72 +146,71 @@
       <section class="overlay hidden">
         <article class="overlay_images">
           <div class="overlay_close">
-            <button class="close_btn">
+            <button class="close_btn" data-btn="close">
               <img src="images/icon-close.svg" />
             </button>
           </div>
           <div class="overlay_main">
-            <button class="overlay_btn overlay_left">
-              <img src="images/icon-previous.svg" />
+            <button class="overlay_btn overlay_left" data-btn="left">
+              <img src="images/icon-previous.svg" data-btn="left" />
             </button>
-            <img
-              class="overlay_main-img"
-              src="images/image-product-1.jpg"
-              alt="product-image"
-            />
-            <button class="overlay_btn overlay_right">
-              <img src="images/icon-next.svg" />
+            <div class="overlay_main-img"></div>
+            <button class="overlay_btn overlay_right" data-btn="right">
+              <img src="images/icon-next.svg" data-btn="right" />
             </button>
           </div>
-          <!-- <ul class="overlay_thumbnails">
-            <li class="overlay_thumbnail product-1 selected">
-              <img src="images/image-product-1-thumbnail.jpg" alt="product-1" />
-            </li>
-            <li class="overlay_thumbnail product-2">
-              <img src="images/image-product-2-thumbnail.jpg" alt="product-2" />
-            </li>
-            <li class="overlay_thumbnail product-3">
-              <img src="images/image-product-3-thumbnail.jpg" alt="product-3" />
-            </li>
-            <li class="overlay_thumbnail product-4">
-              <img src="images/image-product-4-thumbnail.jpg" alt="product-4" />
-            </li>
-          </ul> -->
+
           <form class="overlay_thumbnails">
             <input
-              id="product-1"
+              id="overlay_1"
               name="thumbnail"
-              value="product-2"
+              value="product-1"
               type="radio"
             />
-            <label for="product-1" class="overlay_thumbnail selected">
+            <label
+              for="overlay_1"
+              class="overlay_thumbnail overlay_1"
+              data-product="product-1"
+            >
               <img src="images/image-product-1-thumbnail.jpg" alt="product-1" />
             </label>
             <input
-              id="product-2"
+              id="overlay_2"
               name="thumbnail"
               value="product-2"
               type="radio"
             />
-            <label for="product-2" class="overlay_thumbnail">
+            <label
+              for="overlay_2"
+              class="overlay_thumbnail overlay_2"
+              data-product="product-2"
+            >
               <img src="images/image-product-2-thumbnail.jpg" alt="product-2" />
             </label>
             <input
-              id="product-3"
+              id="overlay_3"
               name="thumbnail"
               value="product-3"
               type="radio"
             />
-            <label for="product-3" class="overlay_thumbnail">
+            <label
+              for="overlay_3"
+              class="overlay_thumbnail overlay_3"
+              data-product="product-3"
+            >
               <img src="images/image-product-3-thumbnail.jpg" alt="product-3" />
             </label>
             <input
-              id="product-4"
+              id="overlay_4"
               name="thumbnail"
               value="product-4"
               type="radio"
             />
-            <label for="product-4" class="overlay_thumbnail">
+            <label
+              for="overlay_4"
+              class="overlay_thumbnail overlay_4"
+              data-product="product-4"
+            >
               <img src="images/image-product-4-thumbnail.jpg" alt="product-4" />
             </label>
           </form>

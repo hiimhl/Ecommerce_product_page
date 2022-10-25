@@ -2,12 +2,28 @@
 
 let count = 0;
 let cartNum = 0;
+let selectedImg = "product-1";
+let selectedOverlayImg = "product-1";
+
+// cart
 let num = document.querySelector(".count_num");
 const cartBtn = document.querySelector(".cart_btn");
 const countMinusBtn = document.querySelector(".count_minus");
 const countPlusBtn = document.querySelector(".count_plus");
 const addBtn = document.querySelector(".btns_add");
-const thumbnails = document.querySelector(".thumbnails");
+
+// main
+const mainImg = document.querySelector(".images_main");
+const thumbForm = document.querySelector(".thumbnails");
+const thumbRadio = document.querySelectorAll(".thumb-radio");
+
+// overlay
+const overlay = document.querySelector(".overlay");
+const overlayCloseBtn = document.querySelector(".close_btn");
+const overlayMainImg = document.querySelector(".overlay_main-img");
+const overlayBtns = document.querySelector(".overlay_main");
+const overlayThumbForm = document.querySelector(".overlay_thumbnails");
+const overlayThumbs = document.querySelectorAll(".overlay_thumbnail");
 
 //toggle the cart visible
 function toggleCart() {
@@ -72,8 +88,6 @@ function addCart() {
     //hide the empty message
     empty.classList.add("hidden");
 
-    //eidt ea
-
     //make and append item list
     makeLi(li, cartNum);
 
@@ -86,36 +100,96 @@ function addCart() {
     minusBtn.addEventListener("click", () => (cartNum -= 1));
     plusBtn.addEventListener("click", () => (cartNum += 1));
     cartEa.innerText = cartNum;
-    console.log(cartEa);
     count = 0;
     num.innerText = count;
   }
 }
 
-function changeOverlayImg(e) {
-  const img = e.target.alt;
-  console.log(img);
+//해당 radio button이 선택되었다면 메인이미지를 변경
+function changeMainImg() {
+  thumbRadio.forEach((it) => {
+    if (it.checked) {
+      const targetId = it.id;
+      const label = document.querySelector(`.${targetId}`);
+      label.classList.add("selected");
+      mainImg.classList.add(`main_${targetId}`);
+      //to use overlay
+      selectedImg = targetId;
+    } else {
+      const targetId = it.id;
+      const label = document.querySelector(`.${targetId}`);
+      label.classList.remove("selected");
+      mainImg.classList.remove(`main_${targetId}`);
+    }
+  });
+}
 
-  const overlay = document.querySelector(".overlay");
-  const overlayImg = document.querySelector(".overlay_main");
-  const thumbnail = document.querySelector(`.${img}`);
+// handle the selected css of overlay Thumbnails
+function overlaySelectedThumb() {
+  overlayThumbs.forEach((thumb) =>
+    thumb.getAttribute("data-product") === selectedOverlayImg
+      ? thumb.classList.add("selected")
+      : thumb.classList.remove("selected")
+  );
+}
 
+//클릭시 메인 이미지의 정보를 받아오기
+function overlayHandler() {
+  overlayMainImg.style.backgroundImage = `url(images/image-${selectedImg}.jpg)`;
   overlay.classList.toggle("hidden");
 
-  overlayImg.innerHTML = `
-      <button class="overlay_btn overlay_left">
-        <img src="images/icon-previous.svg" />
-      </button>
-      <img
-      class="overlay_main-img"
-      src="images/image-${img}.jpg"
-      alt="product-image"
-      />
-      <button class="overlay_btn overlay_right">
-        <img src="images/icon-next.svg" />
-      </button>
-  `;
-  thumbnail.classList.toggle("selected");
+  const productNum = selectedImg.slice(-1);
+  const selectedThumb = document.querySelector(`.overlay_${productNum}`);
+  selectedThumb.classList.add("selected");
+}
+
+//썸네일 클릭시 메인 이미지 변경
+function overlayThumbHandler(e) {
+  selectedOverlayImg = e.target.value || "product-1";
+  overlayMainImg.style.backgroundImage = `url(images/image-${selectedOverlayImg}.jpg)`;
+
+  overlaySelectedThumb();
+}
+
+function closeOverlay() {
+  overlay.classList.toggle("hidden");
+
+  // remove the selected css
+  overlayThumbs.forEach((thumb) => thumb.classList.remove("selected"));
+}
+
+// Handle the overlay slider buttons
+function overlaySliderBtnsHandler(e) {
+  let data = e.target.dataset;
+  let value = parseInt(selectedOverlayImg.slice(-1));
+  // console.log(value);
+
+  if (data.btn === "left") {
+    // click the left button
+    if (value === 1) {
+      return;
+    } else {
+      value -= 1;
+      selectedOverlayImg = `product-${value}`;
+      overlayMainImg.style.backgroundImage = `url(images/image-product-${value}.jpg)`;
+
+      overlaySelectedThumb();
+    }
+  } else if (data.btn === "right") {
+    // click the right button
+    if (value === 4) {
+      return;
+    } else {
+      value += 1;
+      selectedOverlayImg = `product-${value}`;
+      overlayMainImg.style.backgroundImage = `url(images/image-product-${value}.jpg)`;
+
+      overlaySelectedThumb();
+    }
+  } else {
+    // click main image or empty space
+    return;
+  }
 }
 
 // Event Listener
@@ -124,7 +198,11 @@ function addEvent() {
   countMinusBtn.addEventListener("click", decreaseCount);
   countPlusBtn.addEventListener("click", increaseCount);
   addBtn.addEventListener("click", addCart);
-  thumbnails.addEventListener("click", changeOverlayImg);
+  mainImg.addEventListener("click", overlayHandler);
+  overlayCloseBtn.addEventListener("click", closeOverlay);
+  thumbForm.addEventListener("click", changeMainImg);
+  overlayThumbForm.addEventListener("click", overlayThumbHandler);
+  overlayBtns.addEventListener("click", overlaySliderBtnsHandler);
 }
 
 addEvent();
