@@ -2,6 +2,7 @@
 
 let count = 0;
 let id = 0;
+let mobileImg = 1;
 let selectedImg = "product-1";
 let selectedOverlayImg = "product-1";
 
@@ -13,7 +14,9 @@ class List {
     this.ea = ea;
   }
 }
-const dataList = [];
+let dataList = [];
+
+const body = document.getElementsByTagName("body")[0];
 
 // cart
 let num = document.querySelector(".count_num");
@@ -36,10 +39,15 @@ const overlayBtns = document.querySelector(".overlay_main");
 const overlayThumbForm = document.querySelector(".overlay_thumbnails");
 const overlayThumbs = document.querySelectorAll(".overlay_thumbnail");
 
+//mobile
+const mobileBtns = document.querySelector(".mobile-btns");
+const mobileMenu = document.querySelector(".nav_menu");
+
 //toggle the cart visible
 function toggleCart() {
   const shoppingCart = document.querySelector(".cart-box");
   shoppingCart.classList.toggle("hidden");
+  mobileBtns.classList.toggle("disable");
 }
 
 // use the buttons to in/decrease the number
@@ -49,9 +57,10 @@ function increaseCount() {
 }
 
 function decreaseCount() {
-  if (count > 0) {
-    count--;
+  if (count === 0) {
+    return;
   }
+  count--;
   num.innerText = count;
 }
 
@@ -65,8 +74,10 @@ function makeLi(li, data) {
         alt="item_img"
         class="item_img"
       />
-      <span class="item_product">${data.productName}</span>
-      <span class="item_price">${data.price}원</span>
+      <div class="item_content">
+        <span class="item_product">${data.productName}</span>
+        <span class="item_price">${data.price}원</span>
+      </div>
     </div>
     <div class="cart_btns">
       <button class="count-btn cart_minus">
@@ -89,16 +100,13 @@ function addCart() {
     return alert("수량을 추가해주세요.");
   }
   if (count > 0 && window.confirm("추가하시겠습니까?")) {
-    const cart = document.querySelector(".cart_list");
-    const empty = document.querySelector(".cart_empty");
-    const li = document.createElement("li");
-
     let cartNum = 0;
 
     //copy the count
     cartNum += count;
 
     //hide the empty message
+    const empty = document.querySelector(".cart_empty");
     empty.classList.add("hidden");
 
     // make the cart list and push to array
@@ -106,10 +114,9 @@ function addCart() {
     dataList.push(list);
 
     //make and append li to cart list
-    makeLi(li, list);
-    cart.appendChild(li);
+    makeItemList();
 
-    // cart 수량, 삭제버튼 작동시키기
+    cart.addEventListener("click", cartBtnsHandler);
 
     // 초기화, 값 출력
     count = 0;
@@ -118,24 +125,51 @@ function addCart() {
   }
 }
 
+function makeItemList() {
+  const li = document.createElement("li");
+  const cart = document.querySelector(".cart_list");
+  if (dataList.length === 0) {
+    cart.innerHTML = `
+      <li class="cart_empty">
+        <strong> Your cart is empty.</strong>
+      </li>
+    `;
+  }
+  dataList.forEach((item) => {
+    makeLi(li, item);
+    cart.appendChild(li);
+  });
+}
+
 function cartBtnsHandler(e) {
-  const data = e.target.dataset;
-  const dataId = data.id;
-  const dataType = data.type;
+  const dataId = e.target.dataset.id;
+  const dataType = e.target.dataset.type;
+  // Edit product count
   const div = e.target.parentElement.parentElement;
   const span = div.children[1];
-  console.log(div, span);
-  console.log(span.value);
+
   if (!dataId) {
     return;
   } else if (dataType === "plus") {
-    // dataList.map((list) =>
-    //   list.id === parseInt(dataId)
-    //     ? (list.ea += 1 )
-    //     : ""
-    // );
-    // span.innerText =
-    // const datahi = dataList.find((it) => it.id === parseInt(dataId));
+    // plus button
+    dataList[dataId].ea += 1;
+    span.innerText = dataList[dataId].ea;
+    //
+  } else if (dataType === "minus") {
+    // minus button
+    if (dataList[dataId].ea === 1) {
+      return;
+    }
+    dataList[dataId].ea -= 1;
+    span.innerText = dataList[dataId].ea;
+    //
+  } else if (dataType === "remove") {
+    // remove button
+    let array = dataList.filter((item) => item.id !== parseInt(dataId));
+    dataList = array;
+    if (window.confirm("삭제하시겠습니까?")) {
+      makeItemList();
+    }
   }
 }
 
@@ -226,18 +260,67 @@ function overlaySliderBtnsHandler(e) {
   }
 }
 
+function mobileMainImgHandler(e) {
+  const type = e.target.dataset.type || 1;
+  if (!type) {
+    return;
+  } else if (type === "left") {
+    if (mobileImg === 1) {
+      return;
+    } else {
+      mobileImg -= 1;
+      mainImg.style.backgroundImage = `url(images/image-product-${mobileImg}.jpg)`;
+    }
+  } else if (type === "right") {
+    if (mobileImg === 4) {
+      return;
+    }
+    mobileImg += 1;
+    mainImg.style.backgroundImage = `url(images/image-product-${mobileImg}.jpg)`;
+  }
+}
+
+function mobileToggleMenu() {
+  const menuBar = document.querySelector(".nav_pages");
+  const closeBtn = document.querySelector(".nav_close");
+
+  menuBar.classList.remove("disable");
+  mobileBtns.classList.add("disable");
+
+  closeBtn.addEventListener("click", () => {
+    menuBar.classList.add("disable");
+    mobileBtns.classList.remove("disable");
+  });
+}
+
 // Event Listener
 function addEvent() {
+  // cart
   cartBtn.addEventListener("click", toggleCart);
+
+  // main
   countMinusBtn.addEventListener("click", decreaseCount);
   countPlusBtn.addEventListener("click", increaseCount);
   addBtn.addEventListener("click", addCart);
   mainImg.addEventListener("click", overlayHandler);
-  overlayCloseBtn.addEventListener("click", closeOverlay);
   thumbForm.addEventListener("click", changeMainImg);
+
+  // overlay
+  overlayCloseBtn.addEventListener("click", closeOverlay);
   overlayThumbForm.addEventListener("click", overlayThumbHandler);
   overlayBtns.addEventListener("click", overlaySliderBtnsHandler);
-  cart.addEventListener("click", cartBtnsHandler);
+
+  // mobile
+  mobileBtns.addEventListener("click", mobileMainImgHandler);
+  mobileMenu.addEventListener("click", mobileToggleMenu);
 }
 
 addEvent();
+
+//  prevent the function on mobile
+window.onresize = () => {
+  const innerWidth = window.innerWidth;
+  innerWidth <= "375"
+    ? ""
+    : mainImg.removeEventListener("click", overlayHandler);
+};

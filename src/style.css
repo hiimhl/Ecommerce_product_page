@@ -29,6 +29,10 @@
 body {
   font-size: 16px;
   font-family: "Kumbh Sans", sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 button {
   cursor: pointer;
@@ -115,9 +119,9 @@ button {
   width: 400px;
   height: 300px;
   border-radius: 5px;
+  overflow: hidden;
   -webkit-box-shadow: 0px 2px 13px 7px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 2px 13px 7px rgba(0, 0, 0, 0.15);
-  overflow-y: scroll;
 }
 
 .cart_title {
@@ -129,8 +133,9 @@ button {
   border-top: var(--light-gray) 2px solid;
   color: var(--dark-gray);
   font-weight: var(--font-weight-bold);
-  height: 90%;
+  height: 84%;
   width: 100%;
+  overflow-y: auto;
 }
 .cart_item {
   display: flex;
@@ -144,6 +149,10 @@ button {
   align-items: center;
   font-size: 0.9rem;
 }
+.item_content {
+  height: 100%;
+  color: black;
+}
 .item_img {
   margin: 0 var(--space-small);
   width: 40px;
@@ -151,6 +160,7 @@ button {
 }
 
 .item_price {
+  font-size: var(--font-size-small);
   margin-left: var(--space-xsmall);
 }
 
@@ -180,8 +190,17 @@ button {
 }
 
 .cart_empty {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
   text-align: center;
-  margin: 100px;
+}
+.cart_empty > strong {
+  margin: auto;
+  height: 50px;
+  width: 50%;
+  /* background-color: red; */
 }
 
 /* product */
@@ -529,6 +548,7 @@ button {
     width: 100%;
     border-radius: 0;
     height: 270px;
+    cursor: auto;
   }
 
   .thumbnails {
@@ -598,10 +618,36 @@ button {
     width: 100%;
   }
 
+  /* shopping cart */
+  .cart-box {
+    top: 80px;
+    left: 10px;
+    width: 95%;
+    height: 230px;
+    /* overflow: hidden; */
+  }
+  .cart_list {
+    overflow-y: auto;
+    height: 180px;
+  }
+
+  .item_content {
+    display: flex;
+    flex-direction: column;
+  }
+  .item_price {
+    margin-top: var(--space-xsmall);
+    margin-left: 0;
+  }
+  .cart_empty {
+    /* margin: 0; */
+  }
+
+  /* attribution */
   .attribution {
     margin-bottom: var(--space-small);
   }
-  /*  */
+
   /* hidden */
   .disable {
     display: none;
