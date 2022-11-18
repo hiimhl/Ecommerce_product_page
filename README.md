@@ -2,29 +2,29 @@
 
 ## Description
 
-: Frontend Mentor 사이트의 챌린지 중 하나로, 쇼핑몰의 상품 상세 페이지를 구현한 것.
+: Vanilla JS를 사용하여 실제 쇼핑몰의 상세 페이지를 구현함.
 
 ## Language
 
 - HTML
 - CSS
-- Java Script
+- JavaScript
 
-### 사이트
+### 디자인 및 소스 참고 사이트
 
-https://hiimhl.github.io//Ecommerce_product_page/
+[Frontend Mentor](https://www.frontendmentor.io)
 
 ### 프리뷰
 
-<b>Desktop 버전</b></br>
-<img src='images/desktop.png' width='700'>
+\*배포 사이트 : https://hiimhl.github.io//Ecommerce_product_page/
 
-<b>Mobile 버전</b></br>
-<img src='images/Mobile.png' height='700'>
+<b>Desktop</b></br>
+<img src='images/preview/product.png' width='100%'><br/>
+<img src='images/preview/product_2.png' width='100%'>
+<br/><br/><br/>
+<b>Mobile</b></br>
 
----
-
-### 디자인 참고 사이트
-
-[Frontend Mentor](https://www.frontendmentor.io)
-[Design preview for the E-commerce product page coding challenge]
+<center>
+<img align='left' src='images/preview/product_mobile.png' width='47%'>
+<img align='right' src='images/preview/product_m_a.png' width='47%'>
+</center>
